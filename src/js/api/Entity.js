@@ -1,11 +1,51 @@
+import createRequest from './createRequest';
+
 export default class Entity {
-  list() {}
+  constructor(serverUrl, path) {
+    this.serverUrl = serverUrl;
+    this.path = path;
+  }
 
-  get() {}
+  getUrl(id = '') {
+    const url = `${this.serverUrl}${this.path}`;
 
-  create() {}
+    return id ? `${url}/${id}` : url;
+  }
 
-  update() {}
+  list() {
+    return createRequest({
+      url: this.getUrl(),
+      method: 'GET',
+    });
+  }
 
-  delete() {}
+  get(id) {
+    return createRequest({
+      url: this.getUrl(id),
+      method: 'GET',
+    });
+  }
+
+  create(data) {
+    return createRequest({
+      url: this.getUrl(),
+      method: 'POST',
+      data,
+    });
+  }
+
+  update(id, data) {
+    return createRequest({
+      url: this.getUrl(id),
+      method: 'PUT',
+      data,
+    });
+  }
+
+  delete(id) {
+    return createRequest({
+      url: this.getUrl(id),
+      method: 'DELETE',
+    });
+  }
 }

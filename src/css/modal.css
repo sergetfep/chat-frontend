@@ -89,31 +89,20 @@
   background-color: #f6c5dc;
 }
 
-
 .modal__ok {
   margin-left: 10px;
   border-color: #58bf97;
   background-color: #58bf97;
 }
 
-
-
-
-
-
-
-
-
-
 .modal__form.active .modal__background,
-.modal__delete.active .modal__background{
+.modal__delete.active .modal__background {
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.7);
-
 }
 
 .modal__form.active .modal__content,
-.modal__delete.active .modal__content{
+.modal__delete.active .modal__content {
   transform: translateY(0);
 }
 
@@ -122,3 +111,9 @@
   font-size: 32px;
 }
 
+@media (max-width: 560px) {
+  .modal__content {
+    left: 5%;
+    width: 90%;
+  }
+}
